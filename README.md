@@ -8,7 +8,7 @@ A wouldbe toolset for web exploitation and other general tools used in CTFs.
 
 ## Usage
 
-### String Bruteforcer
+### Bruteforce
 A multithreaded approach to generate strings
 
 ```py
@@ -30,6 +30,19 @@ print(webXtools.bruteforce(minLength=1, maxLength=4, charSet=string.ascii_letter
 
 # Prints all the strings generated
 webXtools.bruteforce(minLength=1, maxLength=4, charSet=string.ascii_letters+string.digits, noOfThreads=4, callback=print)
+
+
+# bruteforceList
+def doit(st):
+    # something with the string 
+    return False
+
+webXtools.bruteforceList(stringList=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10], noOfThreads=5, callback=doit)
+
+
+# bruteforceFile
+webXtools.bruteforceFile(file="./payloads.txt", noOfThreads=5, callback=check)
+
 ```
 
 ### Race Condition

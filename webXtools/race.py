@@ -18,6 +18,8 @@ def race(url="", cookies={}, method="GET", data="", headers={}, absoluteRequest=
         absoluteRequest (str, optional): Create your own request and not use the other arguments provided. Defaults to "".
         numberOfRequests (int, optional): Number of requests to send. Defaults to 0.
         threads (int, optional): Number of threads to use. Defaults to 1.
+    Returns:
+        list: The responses for all the requests made
     """
 
     def createRequest():
@@ -150,9 +152,11 @@ def race(url="", cookies={}, method="GET", data="", headers={}, absoluteRequest=
     req = absoluteRequest if absoluteRequest!="" else createRequest()
 
     # create threads
+    print("### Generating the Requests ###")
     threadifyCreate()
 
     # run threads after creating them
+    print("### Starting Exploit ###")
     start = time.time()
     threadifySend()
     end = time.time()
