@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.2b'
+VERSION = '1.0.0'
 DESCRIPTION = 'A set of tools for Web Exploitation'
 # LONG_DESCRIPTION = 'A package that (would) contains '
 
@@ -21,10 +21,10 @@ setup(
     long_description_content_type="text/markdown",
     long_description=long_description,
     packages=find_packages(),
-    install_requires=[],
+    install_requires=["asyncio"],
     keywords=['python', 'hacking', 'ctf', 'web explotation', 'bruteforce'],
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Programming Language :: Python :: 3",

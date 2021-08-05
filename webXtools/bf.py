@@ -82,8 +82,8 @@ def bruteforce(minLength=1, maxLength=4, charSet=string.ascii_letters+string.dig
         possibilities = 0
         for i in range(minLength,maxLength+1):
             possibilities = possibilities + (lenChars**i)
-            if possibilities>noOfThreads:
-                raise "Number of threads greater than the bruteforce possibilities"
+            if possibilities<noOfThreads:
+                raise Exception("Number of threads greater than the bruteforce possibilities")
         global tlen
         tlen = math.ceil(possibilities/to)
         first = [0]*minLength
@@ -127,7 +127,16 @@ def bruteforce(minLength=1, maxLength=4, charSet=string.ascii_letters+string.dig
 
 
 def bruteforceList(stringList, noOfThreads=1, callback=print, debug=False):
-    
+    """Given a list iterates that and calls callback for each item
+
+    Args:
+        stringList (list): The list of strings
+        noOfThreads (int, optional): Number of threads to use. Defaults to 1.
+        callback (function, optional): Callback function. Defaults to print.
+        debug (bool, optional): Set to True if all chars needed to be printed. Defaults to False
+    Returns:
+        str or None: Returns the String that was used for solving by callback
+    """
     def start(currList):
         for i in currList:
             if stop:
@@ -174,12 +183,11 @@ def bruteforceList(stringList, noOfThreads=1, callback=print, debug=False):
     lenlist = len(stringList)
 
     if lenlist<noOfThreads:
-        raise "Number of threads greater than the number of strings given"
+        raise Exception("Number of threads greater than the number of strings given")
 
     global stop
     stop = False
     tlists = splitter()
-    print(tlists)
     threadify(tlists)
     try:
         return(finale)
@@ -188,6 +196,18 @@ def bruteforceList(stringList, noOfThreads=1, callback=print, debug=False):
 
 
 def bruteforceFile(file, noOfThreads=1, callback=print, debug=False):
+    """Given a file, iterates that and calls callback for each item
+
+    Args:
+        file (str): Location of file
+        noOfThreads (int, optional): Number of threads to use. Defaults to 1.
+        callback (function, optional): Callback function. Defaults to print.
+        debug (bool, optional): Set to True if all chars needed to be printed. Defaults to False
+    Returns:
+        str or None: Returns the String that was used for solving by callback
+    """
     from webXtools.helper import splitFile
     stringList = splitFile(file)
     return(bruteforceList(stringList, noOfThreads, callback, debug))
+
+
