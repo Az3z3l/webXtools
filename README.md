@@ -6,6 +6,13 @@ A wouldbe toolset for web exploitation and other general tools used in CTFs.
 
 `pip3 install webXtools`
 
+
+## Modules
+
+* [Bruteforcer](#bruteforce)
+* [Race Condition](#race-condition)
+* [JWT](#jwt)
+
 ## Usage
 
 ### Bruteforce
