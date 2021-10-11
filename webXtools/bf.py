@@ -105,7 +105,7 @@ def bruteforce(minLength=1, maxLength=4, charSet=string.ascii_letters+string.dig
     def threadify(lists):
         th = list()
         for i in lists:
-            t1 = Thread(target=start, args=(i))
+            t1 = Thread(target=start, args=(i), name=f"thread-{i}")
             th.append(t1)
 
         for i in th:
