@@ -126,6 +126,24 @@ def bruteforce(minLength=1, maxLength=4, charSet=string.ascii_letters+string.dig
         return(None)
 
 
+def bruteforceNumber(start, end, jump=1, noOfThreads=1, callback=print, debug=False):
+    """Bruteforce the number set
+
+    Args:
+        start (int): First number
+        end (int): Last number
+        jump (int, optional): If any skipping is required. Defaults to 1.
+        noOfThreads (int, optional): Number of threads to use. Defaults to 1.
+        callback (function, optional): Callback function. Defaults to print.
+        debug (bool, optional): Set to True if all chars needed to be printed. Defaults to False
+    Returns:
+        str or None: Returns the String that was used for solving by callback
+    """
+    numberList = []
+    for i in range(start, end, jump):
+        numberList.append(i)
+    return(bruteforceList(numberList, noOfThreads, callback, debug))
+
 def bruteforceList(stringList, noOfThreads=1, callback=print, debug=False):
     """Given a list iterates that and calls callback for each item
 
